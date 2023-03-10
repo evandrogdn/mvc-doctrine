@@ -1,0 +1,14 @@
+{
+    "name": "evandro/crud-pessoas-contatos",
+    "type": "project",
+    "authors": [
+        {
+            "name": "evandrogdn",
+            "email": "evandro@conectra.net.br"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.14",
+        "doctrine/dbal": "^3.6"
+    }
+}
