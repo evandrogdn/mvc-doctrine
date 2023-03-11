@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Model;
+
 /**
  * Model padraão para o projeto, a ser extendido pelos demais a serem implementados
  * 
