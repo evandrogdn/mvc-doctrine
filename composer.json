@@ -8,8 +8,13 @@
         }
     ],
     "require": {
-        "php": "7.1.1",
+        "php": "^8.2.0",
         "doctrine/orm": "^2.14",
         "doctrine/dbal": "^3.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "src": "App"
+        }
     }
 }
