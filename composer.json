@@ -10,11 +10,7 @@
     "require": {
         "php": "^8.2.0",
         "doctrine/orm": "^2.14",
-        "doctrine/dbal": "^3.6"
-    },
-    "autoload": {
-        "psr-4": {
-            "src": "App"
-        }
+        "doctrine/dbal": "^3.6",
+        "symfony/cache": "^6.2"
     }
 }
