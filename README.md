@@ -27,3 +27,5 @@ Para iniciar a aplicação, basta executar o seguinte comando:
 Na sequência, basta configurar uma conexão com o banco de dados, e executar os comandos disponibilizados [aqui](migrations/database.sql)
 
 Agora a aplicação está pronta para uso! Basta operar a mesma.
+
+Para acessar a aplicação, basta acessar esse [link](http://localhost:8088)
