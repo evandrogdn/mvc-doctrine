@@ -27,7 +27,8 @@ class ViewPessoa implements IView
             $grid .= '<td>' . $pessoa->getNome() . '</td>';
             $grid .= '<td>' . $pessoa->getCpf() . '</td>';
             $grid .= '<td><a href="index.php?class=person&&method=update&&id=' . $pessoa->getId() . '">editar</a></td>';
-            $grid .= '<td><a href="index.php?class=person&&method=view&&id='  . $pessoa->getId() . '">remover</a></td>';
+            $grid .= '<td><a href="index.php?class=person&&method=view&&id='  . $pessoa->getId() . '">visualizar</a></td>';
+            $grid .= '<td><a href="index.php?class=person&&method=doDelete&&id='  . $pessoa->getId() . '">remover</a></td>';
             $grid .= '<td><a href="index.php?class=contacts&&method=list&&person_id=' . $pessoa->getId() . '">contatos</a></td>';
             $grid .= '</tr>';
         }

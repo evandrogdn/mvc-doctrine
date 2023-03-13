@@ -106,6 +106,13 @@ class Controller
 
         $this->entityManager->remove($this->model);
         $this->entityManager->flush();
+
+        echo '
+            <script type="text/javascript">
+                window.location.href="index.php?class=' . $_GET['class'] . '&&method=list";
+                alert("Registro removido com sucesso");
+            </script>
+        ';
     }
 
     /**

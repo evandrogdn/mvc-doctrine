@@ -53,6 +53,9 @@ if ($_GET['class'] && $_GET['method']) {
             case 'doUpdate':
                 $controller->update();
                 break;
+            case 'doDelete':
+                $controller->delete();
+                break;
         }
     }
 }
