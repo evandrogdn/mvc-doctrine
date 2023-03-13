@@ -81,7 +81,7 @@ class Controller
     {
         $repository = $this->entityManager->getRepository($this->module);
 
-        return $repository->findAll();
+        return $repository->findBy([], ['id' => 'desc']);
     }
 
     /**
