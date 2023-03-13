@@ -29,7 +29,7 @@ class ViewPessoa implements IView
             $grid .= '<td><a href="index.php?class=person&&method=update&&id=' . $pessoa->getId() . '"><i class="glyphicon glyphicon-pencil"></i></a></td>';
             $grid .= '<td><a href="index.php?class=person&&method=view&&id='  . $pessoa->getId() . '"><i class="glyphicon glyphicon-search"></i></a></td>';
             $grid .= '<td><a href="index.php?class=person&&method=doDelete&&id='  . $pessoa->getId() . '"><i class="glyphicon glyphicon-minus"></i></a></td>';
-            $grid .= '<td><a href="index.php?class=contacts&&method=list&&person_id=' . $pessoa->getId() . '"><i class="glyphicon glyphicon-th-list"></i></a></td>';
+            $grid .= '<td><a href="index.php?class=contacts&&method=list&&person_id=' . $pessoa->getId() . '"><i class="glyphicon glyphicon-phone"></i></a></td>';
             $grid .= '</tr>';
         }
 
