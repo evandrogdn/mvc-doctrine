@@ -36,9 +36,11 @@ class ViewPessoa implements IView
         return '
             <table>
 
-                <a href="index.php?class=person&&method=create">Novo</a>
-                <input type="text" name="filtro_nome">
-                <a href="index.php?class=person&&method=list">Filtrar</a>
+                <form action="index.php?class=person&&method=list" method="post">
+                    <a href="index.php?class=person&&method=create">Novo</a>
+                    <input type="text" name="filtro_nome" />
+                    <input type="submit" value="Filtrar" />
+                </form>
 
                 <thead>
                     <tr>
