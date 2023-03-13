@@ -42,6 +42,9 @@ RUN chown -R ${UID}:${GID} /var/www/html
 RUN chown -R ${UID}:${GID} /root/.composer
 RUN mkdir -p /.composer && chown -R ${UID}:${GID} /.composer
 RUN mkdir -p /.config && chown -R ${UID}:${GID} /.config
+
+# RUN rm -rf vendor/ && composer install --no-dev --ignore-platform-reqs -o -n
+
 VOLUME /var/www/html
 VOLUME /root/.composer
 VOLUME /.composer

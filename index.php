@@ -22,7 +22,7 @@ require './vendor/autoload.php';
 require './src/Controller/ControllerPessoa.php';
 require './src/Controller/ControllerContato.php';
 
-if ($_GET['class'] && $_GET['method']) {
+if (array_key_exists('class', $_GET) && array_key_exists('method', $_GET)) {
     $controller = null;
 
     switch ($_GET['class']) {
