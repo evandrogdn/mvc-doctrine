@@ -8,9 +8,9 @@
     </head>
 
     <body>
-        <header>
-            <a href="index.php?class=person&&method=list">Pessoas</a>
-            <a href="index.php?class=contacts&&method=list&&all=1">Contatos</a>
+        <header style="margin-left: 30px">
+            <a class="btn btn-outline-primary" role="button" href="index.php?class=person&&method=list">Pessoas</a>
+            <a class="btn btn-outline-primary" role="button" href="index.php?class=contacts&&method=list&&all=1">Contatos</a>
         </header>
     </body>
 </html>

@@ -23,37 +23,43 @@ class ViewPessoa implements IView
         // monta o grid dos registros salvos dentro do aplicativo
         foreach ($pessoas as $pessoa) {
             $grid .= '<tr>';
-            $grid .= '<td>' . $pessoa->getId() . '</td>';
+            $grid .= '<td style="text-align: center">' . $pessoa->getId() . '</td>';
             $grid .= '<td>' . $pessoa->getNome() . '</td>';
-            $grid .= '<td>' . $pessoa->getCpf() . '</td>';
-            $grid .= '<td><a href="index.php?class=person&&method=update&&id=' . $pessoa->getId() . '">editar</a></td>';
-            $grid .= '<td><a href="index.php?class=person&&method=view&&id='  . $pessoa->getId() . '">visualizar</a></td>';
-            $grid .= '<td><a href="index.php?class=person&&method=doDelete&&id='  . $pessoa->getId() . '">remover</a></td>';
-            $grid .= '<td><a href="index.php?class=contacts&&method=list&&person_id=' . $pessoa->getId() . '">contatos</a></td>';
+            $grid .= '<td style="text-align: center">' . $pessoa->getCpf() . '</td>';
+            $grid .= '<td><a href="index.php?class=person&&method=update&&id=' . $pessoa->getId() . '"><i class="glyphicon glyphicon-pencil"></i></a></td>';
+            $grid .= '<td><a href="index.php?class=person&&method=view&&id='  . $pessoa->getId() . '"><i class="glyphicon glyphicon-search"></i></a></td>';
+            $grid .= '<td><a href="index.php?class=person&&method=doDelete&&id='  . $pessoa->getId() . '"><i class="glyphicon glyphicon-minus"></i></a></td>';
+            $grid .= '<td><a href="index.php?class=contacts&&method=list&&person_id=' . $pessoa->getId() . '"><i class="glyphicon glyphicon-th-list"></i></a></td>';
             $grid .= '</tr>';
         }
 
         return '
-            <table>
+            <div class="d-flex justify-content-center flex-nowrap" style="margin: 30px">
+                <table class="table table-hover table-striped">
 
-                <form action="index.php?class=person&&method=list" method="post">
-                    <a href="index.php?class=person&&method=create">Novo</a>
-                    <input type="text" name="filtro_nome" />
-                    <input type="submit" value="Filtrar" />
-                </form>
+                    <form action="index.php?class=person&&method=list" method="post">
+                        <div class="form-group row">
+                            <a class="btn btn-outline-primary" role="button" href="index.php?class=person&&method=create">Novo</a>
+                            <input type="text" name="filtro_nome" class="form-control"/>
+                        </div>
+                        <div class="form-group row">
+                            <button class="btn btn-primary pull-right" type="submit">Filtrar</button>
+                        </div>
+                    </form>
 
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nome</th>
-                        <th>CPF</th>
-                        <th colspan="3">Ações</th>
-                    </tr>
-                </thead>
-                <tbody>
-                ' . $grid . '
-                </tbody>
-            </table>
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">ID</th>
+                            <th style="text-align: center">Nome</th>
+                            <th style="text-align: center">CPF</th>
+                            <th style="text-align: center" colspan="4">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    ' . $grid . '
+                    </tbody>
+                </table>
+            </div>
         ';
     }
 
@@ -83,19 +89,25 @@ class ViewPessoa implements IView
         // formulario de visualização não vai exibir nenhum botao
         $button = '';
         if ($mode !== 'readonly') {
-            $button = '<input type="submit" value="Gravar" />';
+            $button = '<div class="form-group row pull-right"> <input type="submit" class="btn btn-primary" value="Gravar" /> </div>';
         }
 
         $form = '
-            <form action="' . $action . '" method="post">
-                <label for="nome">Nome</label>
-                <input type="text" name="nome" id="nome" required value="%s" %s />
+            <div class="d-flex justify-content-center flex-nowrap" style="margin: 30px">
+                <form action="' . $action . '" method="post">
+                    <div class="form-group row">
+                        <label for="nome" class="form-label">Nome</label>
+                        <input type="text" name="nome" class="form-control" id="nome" required value="%s" %s />
+                    </div>
 
-                <label for="cpf">CPF</label>
-                <input type="text" name="cpf" id="cpf" maxlength="11" required value="%s" %s />
+                    <div class="form-group row">
+                        <label for="cpf" class="form-label">CPF</label>
+                        <input type="text" name="cpf" class="form-control" id="cpf" maxlength="11" required value="%s" %s />
+                    </div>
 
-                %s
-            </form>
+                    %s
+                </form>
+            </div>
         ';
 
         // retornando de forma a facilitar tratamento quando renderizar em tela

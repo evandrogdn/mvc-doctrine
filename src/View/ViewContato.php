@@ -18,13 +18,13 @@ class ViewContato implements IView
         // monta o grid dos registros salvos dentro do aplicativo
         foreach ($contatos as $contato) {
             $grid .= '<tr>';
-            $grid .= '<td>' . $contato->getId() . '</td>';
-            $grid .= '<td>' . ucfirst($contato->getTipo()) . '</td>';
-            $grid .= '<td>' . $contato->getDescricao() . '</td>';
+            $grid .= '<td style="text-align: center">' . $contato->getId() . '</td>';
+            $grid .= '<td style="text-align: center">' . ucfirst($contato->getTipo()) . '</td>';
+            $grid .= '<td style="text-align: center">' . $contato->getDescricao() . '</td>';
             if (array_key_exists('all', $_GET)) {
                 if ($_GET['all']) {
                     $pessoa = (new ControllerPessoa)->show($contato->getIdPessoa());
-                    $grid .= '<td>' . $pessoa->getNome() . '</td>';
+                    $grid .= '<td style="text-align: center">' . $pessoa->getNome() . '</td>';
                 }
             } else {
                 $grid .= '<td><a href="index.php?class=contacts&&method=update&&id=' . $contato->getId() . '"><i class="glyphicon glyphicon-pencil"></i></a></td>';
@@ -37,35 +37,39 @@ class ViewContato implements IView
         $buttons = '';
         
         $columnProprietario = '
-            <th>Proprietário</th>
+            <th style="text-align: center">Proprietário</th>
         ';
         if (!array_key_exists('all', $_GET) || !$_GET['all']) {
             $pessoa = (new ControllerPessoa)->show($_GET['person_id']);
             $buttons = '
                 <form action="index.php?class=person&&method=list" method="post">
-                    <a href="index.php?class=contacts&&method=create&&person_id=' . $_GET['person_id'] . '">Novo</a>
-                    <p>Exibindo contatos de ' . $pessoa->getNome() . '</p>
+                    <div class="form-group">
+                        <h5 style="text-align: center;">Exibindo contatos de ' . $pessoa->getNome() . '</h5>
+                        <a class="btn btn-outline-primary" role="button" href="index.php?class=contacts&&method=create&&person_id=' . $_GET['person_id'] . '">Novo</a>
+                    </div>
                 </form>
             ';
 
-            $columnProprietario = '<th colspan="3">Ações</th>';
+            $columnProprietario = '<th style="text-align: center" colspan="3">Ações</th>';
         }
 
         return '
-            <table>
-                ' . $buttons . '
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Tipo</th>
-                        <th>Contato</th>
-                        ' . $columnProprietario . '
-                    </tr>
-                </thead>
-                <tbody>
-                ' . $grid . '
-                </tbody>
-            </table>
+            <div class="d-flex justify-content-center flex-nowrap" style="margin: 30px">
+                <table class="table table-hover table-striped">
+                    ' . $buttons . '
+                    <thead>
+                        <tr>
+                            <th style="text-align: center">ID</th>
+                            <th style="text-align: center">Tipo</th>
+                            <th style="text-align: center">Contato</th>
+                            ' . $columnProprietario . '
+                        </tr>
+                    </thead>
+                    <tbody>
+                    ' . $grid . '
+                    </tbody>
+                </table>
+            </div>
         ';
     }
 
@@ -88,23 +92,31 @@ class ViewContato implements IView
         // formulario de visualização não vai exibir nenhum botao
         $button = '';
         if ($mode !== 'readonly') {
-            $button = '<input type="submit" value="Gravar" />';
+            $button = '<div class="form-group row pull-right"> <input type="submit" class="btn btn-primary" value="Gravar" /> </div>';
         }
 
         $form = '
-            <form action="' . $action . '" method="post">
-                <label for="tipo">Tipo</label>
-                <select name=tipo id="tipo">
-                    <option value="telefone" %s>Telefone</option>
-                    <option value="email" %s>Email</option>
-                </select>
+            <div class="d-flex justify-content-center flex-nowrap" style="margin: 30px">
+                <form action="' . $action . '" method="post">
+                    <div class="form-group row">
+                        <label for="tipo" class="form-label">Tipo</label>
+                        <select class="form-control" name=tipo id="tipo">
+                            <option value="telefone" %s>Telefone</option>
+                            <option value="email" %s>Email</option>
+                        </select>
+                    </div>
 
-                <label for="descricao">Contato</label>
-                <input type="text" name="descricao" id="descricao" required value="%s" %s />
+                    <div class="form-group row">
+                        <label for="descricao" class="form-label">Contato</label>
+                        <input type="text" name="descricao" class="form-control" id="descricao" required value="%s" %s />
+                    </div>
 
-                <input type="hidden" value="%s" name="idPessoa" />
-                %s
-            </form>
+                    <div class="form-group row">
+                        <input type="hidden" value="%s" name="idPessoa" />
+                    </div>
+                    %s
+                </form>
+            </div>
         ';
 
         // retornando de forma a facilitar tratamento quando renderizar em tela

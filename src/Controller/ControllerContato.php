@@ -50,4 +50,16 @@ class ControllerContato extends Controller
     {
         parent::update('&&person_id=' . $_POST['idPessoa']);
     }
+
+    /**
+     * Reescreve o metodo de remocao para garantir a passagem dos params da pessoa
+     *
+     * @param string $complemento
+     * @return void
+     */
+    public function delete(string $complemento = '')
+    {
+        $model = $this->show($_GET['id']);
+        parent::delete('&&person_id=' . $model->getIdPessoa());
+    }
 }
