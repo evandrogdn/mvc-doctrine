@@ -29,12 +29,10 @@ class ControllerPessoa extends Controller
 
         $repository = $this->entityManager->getRepository($this->module);
 
-        $result = $repository->createQueryBuilder('pes')
+        return $repository->createQueryBuilder('pes')
             ->where('lower(pes.nome) like lower(:pessoa_nome)')
             ->setParameter(':pessoa_nome', '%' . $_POST['filtro_nome'] . '%')
             ->getQuery()
             ->execute();
-
-        return $result;
     }
 }

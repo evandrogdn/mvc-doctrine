@@ -17,7 +17,7 @@ use Doctrine\ORM\Mapping\GeneratedValue;
 class ModelPessoa
 {
     #[Id]
-    #[Column(type: 'string')]
+    #[Column(type: 'integer')]
     #[GeneratedValue()]
     private int $id;
 

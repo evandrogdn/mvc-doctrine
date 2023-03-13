@@ -2,11 +2,15 @@
 <html lang="pt-br">
     <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
     </head>
 
     <body>
         <header>
             <a href="index.php?class=person&&method=list">Pessoas</a>
+            <a href="index.php?class=contacts&&method=list&&all=1">Contatos</a>
         </header>
     </body>
 </html>

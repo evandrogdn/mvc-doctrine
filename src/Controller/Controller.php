@@ -51,9 +51,10 @@ class Controller
     /**
      * Insere o registro conforme os dados preechidos no formulário, e enviados via global $_POST
      *
+     * @param string $complemento
      * @return void
      */
-    public function insert(): void
+    public function insert(string $complemento = ''): void
     {
         foreach ($_POST as $field => $value) {
             // sem necessidade de chamar o metodo setter do registro, pois global __set implementado
@@ -66,7 +67,7 @@ class Controller
 
         echo '
             <script type="text/javascript">
-                window.location.href="index.php?class=' . $_GET['class'] . '&&method=list";
+                window.location.href="index.php?class=' . $_GET['class'] . '&&method=list' . $complemento . '";
                 alert("Registro inserido com sucesso");
             </script>
         ';
@@ -99,8 +100,10 @@ class Controller
 
     /**
      * Remove um registro do banco de dados
+     * 
+     * @param string $complemento
      */
-    public function delete()
+    public function delete(string $complemento = '')
     {
         $this->model = $this->entityManager->find($this->module, $_GET['id']);
 
@@ -109,7 +112,7 @@ class Controller
 
         echo '
             <script type="text/javascript">
-                window.location.href="index.php?class=' . $_GET['class'] . '&&method=list";
+                window.location.href="index.php?class=' . $_GET['class'] . '&&method=list' . $complemento . '";
                 alert("Registro removido com sucesso");
             </script>
         ';
@@ -117,8 +120,10 @@ class Controller
 
     /**
      * Atualiza um registro
+     * 
+     * @param string $complemento
      */
-    public function update()
+    public function update(string $complemento = '')
     {
         $this->model = $this->entityManager->find($this->module, $_GET['id']);
 
@@ -134,7 +139,7 @@ class Controller
 
         echo '
             <script type="text/javascript">
-                window.location.href="index.php?class=' . $_GET['class'] . '&&method=list";
+                window.location.href="index.php?class=' . $_GET['class'] . '&&method=list' . $complemento . '";
                 alert("Registro alterado com sucesso");
             </script>
         ';
